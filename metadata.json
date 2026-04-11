@@ -1,0 +1,686 @@
+[
+  {
+    "file_name": "人教版_九年级_全一册_ch13_内能.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 13,
+    "chapter_name": "内能",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch13_内能.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch14_内能的利用.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 14,
+    "chapter_name": "内能的利用",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch14_内能的利用.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch15_电流和电路.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 15,
+    "chapter_name": "电流和电路",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch15_电流和电路.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch16_电压电阻.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 16,
+    "chapter_name": "电压电阻",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch16_电压电阻.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch17_欧姆定律.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 17,
+    "chapter_name": "欧姆定律",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch17_欧姆定律.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch18_电功率.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 18,
+    "chapter_name": "电功率",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch18_电功率.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch19_生活用电.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 19,
+    "chapter_name": "生活用电",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch19_生活用电.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch20_电与磁.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 20,
+    "chapter_name": "电与磁",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch20_电与磁.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch21_电磁波及其应用.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 21,
+    "chapter_name": "电磁波及其应用",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch21_电磁波及其应用.md"
+  },
+  {
+    "file_name": "人教版_九年级_全一册_ch22_能源与可持续发展.md",
+    "version": "人教版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 22,
+    "chapter_name": "能源与可持续发展",
+    "file_path": "cleaned_md\\人教版_九年级_全一册_ch22_能源与可持续发展.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch01_机械运动.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 1,
+    "chapter_name": "机械运动",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch01_机械运动.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch02_声现象.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 2,
+    "chapter_name": "声现象",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch02_声现象.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch03_物态变化.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 3,
+    "chapter_name": "物态变化",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch03_物态变化.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch04_光现象.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 4,
+    "chapter_name": "光现象",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch04_光现象.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch05_透镜及其应用.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 5,
+    "chapter_name": "透镜及其应用",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch05_透镜及其应用.md"
+  },
+  {
+    "file_name": "人教版_八年级_上册_ch06_质量与密度.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 6,
+    "chapter_name": "质量与密度",
+    "file_path": "cleaned_md\\人教版_八年级_上册_ch06_质量与密度.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch07_力.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 7,
+    "chapter_name": "力",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch07_力.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch08_运动和力.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 8,
+    "chapter_name": "运动和力",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch08_运动和力.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch09_压强.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 9,
+    "chapter_name": "压强",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch09_压强.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch10_浮力.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 10,
+    "chapter_name": "浮力",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch10_浮力.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch11_功和机械能.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 11,
+    "chapter_name": "功和机械能",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch11_功和机械能.md"
+  },
+  {
+    "file_name": "人教版_八年级_下册_ch12_简单机械.md",
+    "version": "人教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 12,
+    "chapter_name": "简单机械",
+    "file_path": "cleaned_md\\人教版_八年级_下册_ch12_简单机械.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch10_机械能、内能及其转化.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 10,
+    "chapter_name": "机械能、内能及其转化",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch10_机械能、内能及其转化.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch11_电路、电流和电压.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 11,
+    "chapter_name": "电路、电流和电压",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch11_电路、电流和电压.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch12_欧姆定律.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 12,
+    "chapter_name": "欧姆定律",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch12_欧姆定律.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch13_电功和电功率.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 13,
+    "chapter_name": "电功和电功率",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch13_电功和电功率.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch14_电与磁.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 14,
+    "chapter_name": "电与磁",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch14_电与磁.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch15_电磁波与通信技术.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 15,
+    "chapter_name": "电磁波与通信技术",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch15_电磁波与通信技术.md"
+  },
+  {
+    "file_name": "北师大版_九年级_全一册_ch16_永恒的探索宇宙和粒子.md",
+    "version": "北师大版",
+    "grade": "九年级",
+    "volume": "全一册",
+    "chapter_number": 16,
+    "chapter_name": "永恒的探索宇宙和粒子",
+    "file_path": "cleaned_md\\北师大版_九年级_全一册_ch16_永恒的探索宇宙和粒子.md"
+  },
+  {
+    "file_name": "北师大版_八年级_上册_ch01_物态及其变化.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 1,
+    "chapter_name": "物态及其变化",
+    "file_path": "cleaned_md\\北师大版_八年级_上册_ch01_物态及其变化.md"
+  },
+  {
+    "file_name": "北师大版_八年级_上册_ch02_机械运动.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 2,
+    "chapter_name": "机械运动",
+    "file_path": "cleaned_md\\北师大版_八年级_上册_ch02_机械运动.md"
+  },
+  {
+    "file_name": "北师大版_八年级_上册_ch03_声现象.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 3,
+    "chapter_name": "声现象",
+    "file_path": "cleaned_md\\北师大版_八年级_上册_ch03_声现象.md"
+  },
+  {
+    "file_name": "北师大版_八年级_上册_ch04_光现象.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 4,
+    "chapter_name": "光现象",
+    "file_path": "cleaned_md\\北师大版_八年级_上册_ch04_光现象.md"
+  },
+  {
+    "file_name": "北师大版_八年级_上册_ch05_透镜及其应用.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 5,
+    "chapter_name": "透镜及其应用",
+    "file_path": "cleaned_md\\北师大版_八年级_上册_ch05_透镜及其应用.md"
+  },
+  {
+    "file_name": "北师大版_八年级_下册_ch06_质量和密度.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 6,
+    "chapter_name": "质量和密度",
+    "file_path": "cleaned_md\\北师大版_八年级_下册_ch06_质量和密度.md"
+  },
+  {
+    "file_name": "北师大版_八年级_下册_ch07_运动和力.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 7,
+    "chapter_name": "运动和力",
+    "file_path": "cleaned_md\\北师大版_八年级_下册_ch07_运动和力.md"
+  },
+  {
+    "file_name": "北师大版_八年级_下册_ch08_压强和浮力.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 8,
+    "chapter_name": "压强和浮力",
+    "file_path": "cleaned_md\\北师大版_八年级_下册_ch08_压强和浮力.md"
+  },
+  {
+    "file_name": "北师大版_八年级_下册_ch09_机械和功.md",
+    "version": "北师大版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 9,
+    "chapter_name": "机械和功",
+    "file_path": "cleaned_md\\北师大版_八年级_下册_ch09_机械和功.md"
+  },
+  {
+    "file_name": "沪教版_九年级_上册_ch11_功与机械能.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 11,
+    "chapter_name": "功与机械能",
+    "file_path": "cleaned_md\\沪教版_九年级_上册_ch11_功与机械能.md"
+  },
+  {
+    "file_name": "沪教版_九年级_上册_ch12_内能与热机.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 12,
+    "chapter_name": "内能与热机",
+    "file_path": "cleaned_md\\沪教版_九年级_上册_ch12_内能与热机.md"
+  },
+  {
+    "file_name": "沪教版_九年级_上册_ch13_简单电路.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 13,
+    "chapter_name": "简单电路",
+    "file_path": "cleaned_md\\沪教版_九年级_上册_ch13_简单电路.md"
+  },
+  {
+    "file_name": "沪教版_九年级_上册_ch14_欧姆定律.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 14,
+    "chapter_name": "欧姆定律",
+    "file_path": "cleaned_md\\沪教版_九年级_上册_ch14_欧姆定律.md"
+  },
+  {
+    "file_name": "沪教版_九年级_上册_ch15_电能与电功率.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 15,
+    "chapter_name": "电能与电功率",
+    "file_path": "cleaned_md\\沪教版_九年级_上册_ch15_电能与电功率.md"
+  },
+  {
+    "file_name": "沪教版_九年级_下册_ch16_电磁铁与自动控制.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 16,
+    "chapter_name": "电磁铁与自动控制",
+    "file_path": "cleaned_md\\沪教版_九年级_下册_ch16_电磁铁与自动控制.md"
+  },
+  {
+    "file_name": "沪教版_九年级_下册_ch17_电动机与发电机.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 17,
+    "chapter_name": "电动机与发电机",
+    "file_path": "cleaned_md\\沪教版_九年级_下册_ch17_电动机与发电机.md"
+  },
+  {
+    "file_name": "沪教版_九年级_下册_ch18_家庭电路与安全用电.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 18,
+    "chapter_name": "家庭电路与安全用电",
+    "file_path": "cleaned_md\\沪教版_九年级_下册_ch18_家庭电路与安全用电.md"
+  },
+  {
+    "file_name": "沪教版_九年级_下册_ch19_电磁波与信息时代.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 19,
+    "chapter_name": "电磁波与信息时代",
+    "file_path": "cleaned_md\\沪教版_九年级_下册_ch19_电磁波与信息时代.md"
+  },
+  {
+    "file_name": "沪教版_九年级_下册_ch20_能源与能量守恒定律.md",
+    "version": "沪教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 20,
+    "chapter_name": "能源与能量守恒定律",
+    "file_path": "cleaned_md\\沪教版_九年级_下册_ch20_能源与能量守恒定律.md"
+  },
+  {
+    "file_name": "沪教版_八年级_上册_ch01_走进物理世界.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 1,
+    "chapter_name": "走进物理世界",
+    "file_path": "cleaned_md\\沪教版_八年级_上册_ch01_走进物理世界.md"
+  },
+  {
+    "file_name": "沪教版_八年级_上册_ch02_声音与环境.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 2,
+    "chapter_name": "声音与环境",
+    "file_path": "cleaned_md\\沪教版_八年级_上册_ch02_声音与环境.md"
+  },
+  {
+    "file_name": "沪教版_八年级_上册_ch03_光和眼睛.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 3,
+    "chapter_name": "光和眼睛",
+    "file_path": "cleaned_md\\沪教版_八年级_上册_ch03_光和眼睛.md"
+  },
+  {
+    "file_name": "沪教版_八年级_上册_ch04_物质的形态及其变化.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 4,
+    "chapter_name": "物质的形态及其变化",
+    "file_path": "cleaned_md\\沪教版_八年级_上册_ch04_物质的形态及其变化.md"
+  },
+  {
+    "file_name": "沪教版_八年级_上册_ch05_质量与密度.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 5,
+    "chapter_name": "质量与密度",
+    "file_path": "cleaned_md\\沪教版_八年级_上册_ch05_质量与密度.md"
+  },
+  {
+    "file_name": "沪教版_八年级_下册_ch06_力和机械.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 6,
+    "chapter_name": "力和机械",
+    "file_path": "cleaned_md\\沪教版_八年级_下册_ch06_力和机械.md"
+  },
+  {
+    "file_name": "沪教版_八年级_下册_ch07_运动和力.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 7,
+    "chapter_name": "运动和力",
+    "file_path": "cleaned_md\\沪教版_八年级_下册_ch07_运动和力.md"
+  },
+  {
+    "file_name": "沪教版_八年级_下册_ch08_压强.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 8,
+    "chapter_name": "压强",
+    "file_path": "cleaned_md\\沪教版_八年级_下册_ch08_压强.md"
+  },
+  {
+    "file_name": "沪教版_八年级_下册_ch09_浮力.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 9,
+    "chapter_name": "浮力",
+    "file_path": "cleaned_md\\沪教版_八年级_下册_ch09_浮力.md"
+  },
+  {
+    "file_name": "沪教版_八年级_下册_ch10_从粒子到宇宙.md",
+    "version": "沪教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 10,
+    "chapter_name": "从粒子到宇宙",
+    "file_path": "cleaned_md\\沪教版_八年级_下册_ch10_从粒子到宇宙.md"
+  },
+  {
+    "file_name": "苏教版_九年级_上册_ch11_简单机械和功.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 11,
+    "chapter_name": "简单机械和功",
+    "file_path": "cleaned_md\\苏教版_九年级_上册_ch11_简单机械和功.md"
+  },
+  {
+    "file_name": "苏教版_九年级_上册_ch12_机械能和内能.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 12,
+    "chapter_name": "机械能和内能",
+    "file_path": "cleaned_md\\苏教版_九年级_上册_ch12_机械能和内能.md"
+  },
+  {
+    "file_name": "苏教版_九年级_上册_ch13_简单电路.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 13,
+    "chapter_name": "简单电路",
+    "file_path": "cleaned_md\\苏教版_九年级_上册_ch13_简单电路.md"
+  },
+  {
+    "file_name": "苏教版_九年级_上册_ch14_欧姆定律.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "上册",
+    "chapter_number": 14,
+    "chapter_name": "欧姆定律",
+    "file_path": "cleaned_md\\苏教版_九年级_上册_ch14_欧姆定律.md"
+  },
+  {
+    "file_name": "苏教版_九年级_下册_ch15_电功和电热.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 15,
+    "chapter_name": "电功和电热",
+    "file_path": "cleaned_md\\苏教版_九年级_下册_ch15_电功和电热.md"
+  },
+  {
+    "file_name": "苏教版_九年级_下册_ch16_电磁转换.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 16,
+    "chapter_name": "电磁转换",
+    "file_path": "cleaned_md\\苏教版_九年级_下册_ch16_电磁转换.md"
+  },
+  {
+    "file_name": "苏教版_九年级_下册_ch17_电磁波与现代通信.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 17,
+    "chapter_name": "电磁波与现代通信",
+    "file_path": "cleaned_md\\苏教版_九年级_下册_ch17_电磁波与现代通信.md"
+  },
+  {
+    "file_name": "苏教版_九年级_下册_ch18_能源与可持续发展.md",
+    "version": "苏教版",
+    "grade": "九年级",
+    "volume": "下册",
+    "chapter_number": 18,
+    "chapter_name": "能源与可持续发展",
+    "file_path": "cleaned_md\\苏教版_九年级_下册_ch18_能源与可持续发展.md"
+  },
+  {
+    "file_name": "苏教版_八年级_上册_ch01_声现象.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 1,
+    "chapter_name": "声现象",
+    "file_path": "cleaned_md\\苏教版_八年级_上册_ch01_声现象.md"
+  },
+  {
+    "file_name": "苏教版_八年级_上册_ch02_光现象.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 2,
+    "chapter_name": "光现象",
+    "file_path": "cleaned_md\\苏教版_八年级_上册_ch02_光现象.md"
+  },
+  {
+    "file_name": "苏教版_八年级_上册_ch03_光的折射透镜.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 3,
+    "chapter_name": "光的折射透镜",
+    "file_path": "cleaned_md\\苏教版_八年级_上册_ch03_光的折射透镜.md"
+  },
+  {
+    "file_name": "苏教版_八年级_上册_ch04_物态变化.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 4,
+    "chapter_name": "物态变化",
+    "file_path": "cleaned_md\\苏教版_八年级_上册_ch04_物态变化.md"
+  },
+  {
+    "file_name": "苏教版_八年级_上册_ch05_物体的运动.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "上册",
+    "chapter_number": 5,
+    "chapter_name": "物体的运动",
+    "file_path": "cleaned_md\\苏教版_八年级_上册_ch05_物体的运动.md"
+  },
+  {
+    "file_name": "苏教版_八年级_下册_ch06_物质的物理属性.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 6,
+    "chapter_name": "物质的物理属性",
+    "file_path": "cleaned_md\\苏教版_八年级_下册_ch06_物质的物理属性.md"
+  },
+  {
+    "file_name": "苏教版_八年级_下册_ch07_力.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 7,
+    "chapter_name": "力",
+    "file_path": "cleaned_md\\苏教版_八年级_下册_ch07_力.md"
+  },
+  {
+    "file_name": "苏教版_八年级_下册_ch08_力与运动.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 8,
+    "chapter_name": "力与运动",
+    "file_path": "cleaned_md\\苏教版_八年级_下册_ch08_力与运动.md"
+  },
+  {
+    "file_name": "苏教版_八年级_下册_ch09_压强和浮力.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 9,
+    "chapter_name": "压强和浮力",
+    "file_path": "cleaned_md\\苏教版_八年级_下册_ch09_压强和浮力.md"
+  },
+  {
+    "file_name": "苏教版_八年级_下册_ch10_从粒子到宇宙.md",
+    "version": "苏教版",
+    "grade": "八年级",
+    "volume": "下册",
+    "chapter_number": 10,
+    "chapter_name": "从粒子到宇宙",
+    "file_path": "cleaned_md\\苏教版_八年级_下册_ch10_从粒子到宇宙.md"
+  }
+]

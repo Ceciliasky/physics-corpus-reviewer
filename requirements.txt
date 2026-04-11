@@ -1,0 +1,7 @@
+streamlit
+langchain-deepseek
+langchain-community
+chromadb
+rank-bm25
+jieba
+python-dotenv

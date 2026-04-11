@@ -7,6 +7,30 @@ from rank_bm25 import BM25Okapi
 from langchain_deepseek import ChatDeepSeek
 from langchain.prompts import PromptTemplate
 
+# ================== 新增：数据库自动重建逻辑 ==================
+def is_database_valid():
+    """检查 chroma_db 是否存在且有效"""
+    db_path = Path("./chroma_db")
+    if not db_path.exists():
+        return False
+    # 检查文件夹内是否有内容（简单判断）
+    if not any(db_path.iterdir()):
+        return False
+    # 尝试连接并检查集合是否存在
+    try:
+        import chromadb
+        client = chromadb.PersistentClient(path=str(db_path))
+        collections = client.list_collections()
+        return len(collections) > 0
+    except:
+        return False
+
+if not is_database_valid():
+    print("未检测到有效的 chroma_db，正在重建（首次启动可能需要 2-3 分钟）...")
+    from build_vector_db import build
+    build()
+    print("数据库重建完成")
+
 # ================== 1. 加载配置 ==================
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
@@ -217,13 +241,11 @@ def terminology_review(text: str) -> str:
         llm_result = llm.predict(prompt)
         # 确保 LLM 返回的表格也包含分隔行（如果缺失则补充）
         if "|------|" not in llm_result and "| --- |" not in llm_result:
-            # 尝试在第一个表头行后插入分隔行
             lines = llm_result.split("\n")
             new_lines = []
             for i, line in enumerate(lines):
                 new_lines.append(line)
                 if i == 0 and line.strip().startswith("|") and "词语" in line:
-                    # 插入分隔行
                     col_count = line.count("|") - 1
                     sep = "|" + "|".join(["------"] * col_count) + "|"
                     new_lines.append(sep)

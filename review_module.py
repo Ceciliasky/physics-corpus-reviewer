@@ -5,14 +5,27 @@ import jieba
 from pathlib import Path
 from dotenv import load_dotenv
 from rank_bm25 import BM25Okapi
-from langchain_deepseek import ChatDeepSeek
-from langchain.prompts import PromptTemplate
+from openai import OpenAI
 
 # ================== 1. 加载配置 ==================
 load_dotenv()
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 if not DEEPSEEK_API_KEY:
     raise ValueError("请在 .env 文件中设置 DEEPSEEK_API_KEY")
+
+# 初始化 DeepSeek 客户端
+client = OpenAI(
+    api_key=DEEPSEEK_API_KEY,
+    base_url="https://api.deepseek.com/v1"
+)
+
+def call_deepseek(prompt: str) -> str:
+    response = client.chat.completions.create(
+        model="deepseek-chat",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=0
+    )
+    return response.choices[0].message.content
 
 # ================== 2. 加载标准术语词典 ==================
 TERMS_FILE = Path("physics_terms.txt")
@@ -30,7 +43,6 @@ else:
 DATA_JSON = Path("./enhanced_data.json")
 
 def split_into_paragraphs(text, max_len=500):
-    """将文本按段落切分，并进一步切分过长的段落（与之前相同）"""
     if not text:
         return []
     raw_paragraphs = re.split(r'\n\s*\n', text)
@@ -56,7 +68,6 @@ def split_into_paragraphs(text, max_len=500):
     return chunks
 
 def load_chunks_from_json():
-    """从 enhanced_data.json 读取所有章节，切分段落，返回 chunks 列表"""
     if not DATA_JSON.exists():
         raise FileNotFoundError(f"未找到 {DATA_JSON}，请先运行 export_to_json.py 生成")
     with open(DATA_JSON, 'r', encoding='utf-8') as f:
@@ -120,12 +131,8 @@ def retrieve_diverse_results(query: str, top_k_per_version: int = 2, max_results
     final.sort(key=lambda x: x["score"], reverse=True)
     return final[:max_results]
 
-# ================== 5. 初始化 DeepSeek 模型 ==================
-llm = ChatDeepSeek(model="deepseek-chat", temperature=0, api_key=DEEPSEEK_API_KEY)
-
-# ================== 6. 知识审校提示词 ==================
-KNOWLEDGE_PROMPT = PromptTemplate(
-    template="""
+# ================== 5. 提示词模板（普通字符串） ==================
+KNOWLEDGE_PROMPT = """
 你是一位初中物理教材审校专家。请完成以下两个任务：
 
 ### 任务一：审校待审文本
@@ -160,13 +167,9 @@ KNOWLEDGE_PROMPT = PromptTemplate(
 如果待审文本正确且无任何问题，则只输出“✅ 正确”，但仍需输出**版本对比表**。
 
 注意：不要使用任何 HTML 标签（如 <br>）。
-""",
-    input_variables=["question", "context"]
-)
+"""
 
-# ================== 7. 术语检查提示词 ==================
-TERM_PROMPT = PromptTemplate(
-    template="""
+TERM_PROMPT = """
 你是物理术语专家。以下词语出现在初中物理教材中，但不在标准术语词典里。
 请判断每个词语是否属于不规范的物理术语，如果是，请给出标准术语；如果不是，请说明“无需修改”。
 
@@ -184,13 +187,9 @@ TERM_PROMPT = PromptTemplate(
 注意：
 - 不要输出任何其他解释。
 - 如果某个词语不需要修改，“标准术语”列填写“无需修改”。
-""",
-    input_variables=["original_text", "unknown_words"]
-)
+"""
 
-# ================== 8. 逻辑一致性检查提示词 ==================
-LOGIC_PROMPT = PromptTemplate(
-    template="""
+LOGIC_PROMPT = """
 你是一位初中物理教材审校专家。请判断以下来自同一教材不同章节的段落是否存在逻辑矛盾或前后不一致。
 
 段落列表（已注明版本和章节）：
@@ -200,11 +199,9 @@ LOGIC_PROMPT = PromptTemplate(
 1. 如果不存在明显矛盾，输出“✅ 逻辑一致”。
 2. 如果存在矛盾，指出矛盾的具体内容，并说明哪一段落可能是错误的。
 3. 尽量简短输出。
-""",
-    input_variables=["passages"]
-)
+"""
 
-# ================== 9. 辅助函数 ==================
+# ================== 6. 辅助函数 ==================
 def find_unknown_terms(text):
     words = set(jieba.lcut(text))
     words = {w for w in words if len(w) > 1 and not w.isdigit()}
@@ -218,7 +215,7 @@ def knowledge_review(text: str, context_docs: list) -> str:
         context_parts.append(f"{source}\n{doc['text']}")
     context = "\n\n".join(context_parts)
     prompt = KNOWLEDGE_PROMPT.format(question=text, context=context)
-    return llm.predict(prompt)
+    return call_deepseek(prompt)
 
 def terminology_review(text: str) -> str:
     words = set(jieba.lcut(text))
@@ -244,7 +241,7 @@ def terminology_review(text: str) -> str:
         if len(unknown_words) > 15:
             unknown_words = unknown_words[:15]
         prompt = TERM_PROMPT.format(original_text=text[:1000], unknown_words=", ".join(unknown_words))
-        llm_result = llm.predict(prompt)
+        llm_result = call_deepseek(prompt)
         if "|------|" not in llm_result and "| --- |" not in llm_result:
             lines = llm_result.split("\n")
             new_lines = []
@@ -265,9 +262,9 @@ def logic_consistency_review(query: str, context_docs: list) -> str:
     for i, doc in enumerate(context_docs, 1):
         passages.append(f"{i}. 【{doc['version']} {doc['chapter_name']}】\n{doc['text'][:500]}")
     prompt = LOGIC_PROMPT.format(passages="\n\n".join(passages))
-    return llm.predict(prompt)
+    return call_deepseek(prompt)
 
-# ================== 10. 统一审校接口 ==================
+# ================== 7. 统一审校接口 ==================
 def review_text(
     text: str,
     check_knowledge: bool = True,
@@ -294,7 +291,7 @@ def review_text(
         result["logic_review"] = logic_consistency_review(text, docs)
     return result
 
-# ================== 11. 测试示例 ==================
+# ================== 8. 测试示例 ==================
 if __name__ == "__main__":
     test_text = "水的沸点是100摄氏度。"
     print(f"待审文本：{test_text}\n")

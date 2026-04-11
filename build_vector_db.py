@@ -11,7 +11,7 @@ CLEANED_MD_DIR = Path("./cleaned_md")      # 备选：直接读 md 文件
 CHROMA_DB_PATH = "./chroma_db"             # 向量数据库保存路径
 
 # 选择嵌入模型（中文友好，轻量）
-EMBEDDING_MODEL = "BAAI/bge-small-zh-v1.5"
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 def split_into_paragraphs(text, max_len=500):
     """将文本按段落切分，并进一步切分过长的段落。"""

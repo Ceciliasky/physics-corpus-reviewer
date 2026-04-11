@@ -1,35 +1,12 @@
 import os
 import json
+import re
 import jieba
 from pathlib import Path
 from dotenv import load_dotenv
 from rank_bm25 import BM25Okapi
 from langchain_deepseek import ChatDeepSeek
 from langchain.prompts import PromptTemplate
-
-# ================== 新增：数据库自动重建逻辑 ==================
-def is_database_valid():
-    """检查 chroma_db 是否存在且有效"""
-    db_path = Path("./chroma_db")
-    if not db_path.exists():
-        return False
-    # 检查文件夹内是否有内容（简单判断）
-    if not any(db_path.iterdir()):
-        return False
-    # 尝试连接并检查集合是否存在
-    try:
-        import chromadb
-        client = chromadb.PersistentClient(path=str(db_path))
-        collections = client.list_collections()
-        return len(collections) > 0
-    except:
-        return False
-
-if not is_database_valid():
-    print("未检测到有效的 chroma_db，正在重建（首次启动可能需要 2-3 分钟）...")
-    from build_vector_db import build
-    build()
-    print("数据库重建完成")
 
 # ================== 1. 加载配置 ==================
 load_dotenv()
@@ -49,24 +26,58 @@ if TERMS_FILE.exists():
 else:
     print("警告：未找到 physics_terms.txt，术语检查功能将不可用。")
 
-# ================== 3. 从向量数据库加载段落（文本+元数据）==================
-def load_chunks_from_chroma():
-    import chromadb
-    client = chromadb.PersistentClient(path="./chroma_db")
-    collection = client.get_collection("physics_corpus")
-    all_data = collection.get(include=["documents", "metadatas"])
+# ================== 3. 从 enhanced_data.json 加载段落 ==================
+DATA_JSON = Path("./enhanced_data.json")
+
+def split_into_paragraphs(text, max_len=500):
+    """将文本按段落切分，并进一步切分过长的段落（与之前相同）"""
+    if not text:
+        return []
+    raw_paragraphs = re.split(r'\n\s*\n', text)
     chunks = []
-    for doc, meta in zip(all_data['documents'], all_data['metadatas']):
-        chunks.append({
-            "text": doc,
-            "version": meta.get('version', 'unknown'),
-            "chapter_name": meta.get('chapter_name', ''),
-            "chapter_number": meta.get('chapter_number', 0)
-        })
+    for para in raw_paragraphs:
+        para = para.strip()
+        if not para:
+            continue
+        if len(para) <= max_len:
+            chunks.append(para)
+        else:
+            sentences = re.split(r'(?<=[。！？；])', para)
+            current = ""
+            for sent in sentences:
+                if len(current) + len(sent) <= max_len:
+                    current += sent
+                else:
+                    if current:
+                        chunks.append(current.strip())
+                    current = sent
+            if current:
+                chunks.append(current.strip())
     return chunks
 
-print("正在从向量数据库加载段落...")
-chunks = load_chunks_from_chroma()
+def load_chunks_from_json():
+    """从 enhanced_data.json 读取所有章节，切分段落，返回 chunks 列表"""
+    if not DATA_JSON.exists():
+        raise FileNotFoundError(f"未找到 {DATA_JSON}，请先运行 export_to_json.py 生成")
+    with open(DATA_JSON, 'r', encoding='utf-8') as f:
+        records = json.load(f)
+    chunks = []
+    for rec in records:
+        content = rec.get("content", "")
+        if not content:
+            continue
+        paragraphs = split_into_paragraphs(content)
+        for para in paragraphs:
+            chunks.append({
+                "text": para,
+                "version": rec["version"],
+                "chapter_name": rec["chapter_name"],
+                "chapter_number": rec["chapter_number"]
+            })
+    return chunks
+
+print("正在从 enhanced_data.json 加载段落并切分...")
+chunks = load_chunks_from_json()
 print(f"已加载 {len(chunks)} 个段落。")
 
 # ================== 4. 构建 BM25 检索器 ==================
@@ -195,14 +206,12 @@ LOGIC_PROMPT = PromptTemplate(
 
 # ================== 9. 辅助函数 ==================
 def find_unknown_terms(text):
-    """从文本中提取不在标准术语词典中的词（长度>1，非纯数字）"""
     words = set(jieba.lcut(text))
     words = {w for w in words if len(w) > 1 and not w.isdigit()}
     unknown = words - standard_terms
     return list(unknown)
 
 def knowledge_review(text: str, context_docs: list) -> str:
-    """基于检索段落进行知识审校，并生成版本对比表"""
     context_parts = []
     for doc in context_docs:
         source = f"【{doc['version']}】{doc['chapter_name']}"
@@ -212,7 +221,6 @@ def knowledge_review(text: str, context_docs: list) -> str:
     return llm.predict(prompt)
 
 def terminology_review(text: str) -> str:
-    """术语检查：先匹配标准术语，再对未知词进行 LLM 判断"""
     words = set(jieba.lcut(text))
     matched_terms = [w for w in words if w in standard_terms and len(w) > 1]
     matched_terms = sorted(set(matched_terms))
@@ -220,7 +228,6 @@ def terminology_review(text: str) -> str:
     unknown_words = [w for w in words if w not in standard_terms and len(w) > 1 and not w.isdigit()]
     unknown_words = sorted(set(unknown_words))
     
-    # 标准术语表格
     result = "### 标准术语（已识别）\n"
     if matched_terms:
         result += "| 术语 | 状态 |\n"
@@ -230,7 +237,6 @@ def terminology_review(text: str) -> str:
     else:
         result += "未识别到标准术语。\n"
     
-    # 疑似不规范术语表格
     result += "\n### 疑似不规范术语\n"
     if not unknown_words:
         result += "未发现疑似不规范的术语。\n"
@@ -239,7 +245,6 @@ def terminology_review(text: str) -> str:
             unknown_words = unknown_words[:15]
         prompt = TERM_PROMPT.format(original_text=text[:1000], unknown_words=", ".join(unknown_words))
         llm_result = llm.predict(prompt)
-        # 确保 LLM 返回的表格也包含分隔行（如果缺失则补充）
         if "|------|" not in llm_result and "| --- |" not in llm_result:
             lines = llm_result.split("\n")
             new_lines = []
@@ -254,7 +259,6 @@ def terminology_review(text: str) -> str:
     return result
 
 def logic_consistency_review(query: str, context_docs: list) -> str:
-    """逻辑一致性检查：基于检索到的同一知识点多个段落"""
     if len(context_docs) < 2:
         return "段落不足，无法进行逻辑一致性检查。"
     passages = []
@@ -272,42 +276,22 @@ def review_text(
     top_k_per_version: int = 2,
     max_results: int = 15
 ) -> dict:
-    """
-    完整的审校函数
-    返回格式：
-    {
-        "original_text": ...,
-        "knowledge_review": "...",
-        "terminology_review": "...",
-        "logic_review": "...",
-        "retrieved_docs": [...]   # 可选，用于调试
-    }
-    """
-    # 1. 检索相关段落
     docs = retrieve_diverse_results(text, top_k_per_version=top_k_per_version, max_results=max_results)
     if not docs:
         return {
             "original_text": text,
             "error": "未找到相关参考语料，请检查数据库。"
         }
-    
     result = {"original_text": text, "retrieved_docs": docs}
-    
-    # 2. 知识审校
     if check_knowledge:
         print("正在执行知识审校...")
         result["knowledge_review"] = knowledge_review(text, docs)
-    
-    # 3. 术语检查
     if check_terminology and standard_terms:
         print("正在执行术语检查...")
         result["terminology_review"] = terminology_review(text)
-    
-    # 4. 逻辑一致性检查
     if check_logic:
         print("正在执行逻辑一致性检查...")
         result["logic_review"] = logic_consistency_review(text, docs)
-    
     return result
 
 # ================== 11. 测试示例 ==================
@@ -315,15 +299,9 @@ if __name__ == "__main__":
     test_text = "水的沸点是100摄氏度。"
     print(f"待审文本：{test_text}\n")
     result = review_text(test_text)
-    
     print("\n" + "="*40 + " 知识审校结果 " + "="*40)
     print(result.get("knowledge_review", "未执行"))
-    
     print("\n" + "="*40 + " 术语检查结果 " + "="*40)
     print(result.get("terminology_review", "未执行（术语词典缺失）"))
-    
     print("\n" + "="*40 + " 逻辑一致性检查 " + "="*40)
     print(result.get("logic_review", "未执行"))
-    
-    # 可选：查看检索到的文档（调试用）
-    # print("\n检索到的文档数量：", len(result.get("retrieved_docs", [])))

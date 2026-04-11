@@ -1,7 +1,10 @@
-streamlit
-langchain-deepseek
-langchain-community
-chromadb
-rank-bm25
-jieba
-python-dotenv
+streamlit==1.32.0
+langchain==0.1.0
+langchain-core==0.1.23
+langchain-deepseek==0.1.4
+chromadb==0.4.22
+rank-bm25==0.2.2
+jieba==0.42.1
+python-dotenv==1.0.0
+tqdm==4.66.0
+sentence-transformers==2.2.2

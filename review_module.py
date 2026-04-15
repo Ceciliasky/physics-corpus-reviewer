@@ -291,6 +291,23 @@ def review_text(
         result["logic_review"] = logic_consistency_review(text, docs)
     return result
 
+def call_deepseek(prompt: str, temperature: float = 0.7) -> str:
+    """直接调用 DeepSeek API，不进行检索，用于内容生成"""
+    import os
+    from openai import OpenAI
+    from dotenv import load_dotenv
+    load_dotenv()
+    api_key = os.getenv("DEEPSEEK_API_KEY")
+    if not api_key:
+        raise ValueError("未设置 DEEPSEEK_API_KEY")
+    client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com/v1")
+    response = client.chat.completions.create(
+        model="deepseek-chat",
+        messages=[{"role": "user", "content": prompt}],
+        temperature=temperature
+    )
+    return response.choices[0].message.content
+
 # ================== 8. 测试示例 ==================
 if __name__ == "__main__":
     test_text = "水的沸点是100摄氏度。"
